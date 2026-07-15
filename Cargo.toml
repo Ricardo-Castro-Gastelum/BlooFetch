@@ -1,0 +1,17 @@
+[package]
+name = "bloofetch"
+version = "0.1.0"
+edition = "2021"
+description = "A beautiful terminal decoration with clock, system stats, and Spotify"
+license = "Apache-2.0"
+repository = "https://github.com/Ricardo-Castro-Gastelum/bloofetch"
+
+[dependencies]
+clap = { version = "4", features = ["derive"] }
+sysinfo = "0.30"
+chrono = "0.4"
+
+[profile.release]
+strip = true
+lto = true
+codegen-units = 1
