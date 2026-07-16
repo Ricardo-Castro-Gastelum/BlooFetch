@@ -124,7 +124,7 @@ fn ui(f: &mut Frame, stats: &SystemStats, color: Color) {
     let clock_time = chrono::Local::now().format("%H:%M").to_string();
     let clock_lines = clock::render_time(&clock_time);
 
-    let clock_width = clock_lines[0].len() as u16;
+    let clock_width = clock_lines[0].chars().count() as u16;
     let clock_height = clock_lines.len() as u16;
 
     let clock_x = (size.width.saturating_sub(clock_width)) / 2;
