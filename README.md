@@ -25,12 +25,12 @@ cargo install bloofetch
 ### Option 2: Install script (Linux/macOS)
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/Ricardo-Castro-Gastelum/bloofetch/main/install.sh | bash
+curl -sSL https://raw.githubusercontent.com/Ricardo-Castro-Gastelum/BlooFetch/main/install.sh | bash
 ```
 
 ### Option 3: Download binary
 
-Go to [Releases](https://github.com/Ricardo-Castro-Gastelum/bloofetch/releases) and download the binary for your platform.
+Go to [Releases](https://github.com/Ricardo-Castro-Gastelum/BlooFetch/releases) and download the binary for your platform.
 
 ## Usage
 

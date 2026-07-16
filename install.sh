@@ -2,7 +2,7 @@
 set -e
 
 BLOOFETCH_VERSION="v0.2.0"
-REPO="Ricardo-Castro-Gastelum/bloofetch"
+REPO="Ricardo-Castro-Gastelum/BlooFetch"
 
 detect_platform() {
     local os=$(uname -s | tr '[:upper:]' '[:lower:]')
