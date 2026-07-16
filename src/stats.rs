@@ -45,20 +45,6 @@ impl SystemStats {
             (self.disk_used as f32 / self.disk_total as f32) * 100.0
         }
     }
-
-    pub fn ram_gb(&self) -> (f64, f64) {
-        (
-            self.ram_used as f64 / 1_073_741_824.0,
-            self.ram_total as f64 / 1_073_741_824.0,
-        )
-    }
-
-    pub fn disk_gb(&self) -> (f64, f64) {
-        (
-            self.disk_used as f64 / 1_073_741_824.0,
-            self.disk_total as f64 / 1_073_741_824.0,
-        )
-    }
 }
 
 fn get_disk_usage() -> (u64, u64) {

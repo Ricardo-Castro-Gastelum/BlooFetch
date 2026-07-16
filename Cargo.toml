@@ -1,13 +1,14 @@
 [package]
 name = "bloofetch"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
-description = "A beautiful terminal decoration with clock, system stats, and Spotify"
+description = "A beautiful full-screen terminal decoration with clock, system stats, and Spotify"
 license = "Apache-2.0"
 repository = "https://github.com/Ricardo-Castro-Gastelum/bloofetch"
 
 [dependencies]
-clap = { version = "4", features = ["derive"] }
+ratatui = "0.28"
+crossterm = "0.28"
 sysinfo = "0.30"
 chrono = "0.4"
 
