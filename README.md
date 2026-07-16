@@ -5,41 +5,17 @@
 <h1 align="center">BlooFetch</h1>
 
 <p align="center">
-  A beautiful full-screen terminal decoration with clock, system stats, and Spotify
+  Full-screen terminal clock with system stats
 </p>
 
 <p align="center">
   <a href="#installation">Installation</a> •
   <a href="#usage">Usage</a> •
-  <a href="#features">Features</a> •
+  <a href="#options">Options</a> •
   <a href="#license">License</a>
 </p>
 
 ---
-
-## Preview
-
-A full-screen TUI application that shows:
-- Big ASCII clock in the center
-- System stats (CPU, RAM, Disk) as percentages
-- Clean, minimal design
-
-```
-     Ram: 24.9%
-     Cpu: 3.2%
-     Disk: 48.4%
-
-          ████████          ████████
-          ██    ██          ██    ██
-          ██    ██                ██
-          ██    ██          ████████
-          ██    ██          ██
-          ██    ██          ██
-          ████████          ████████
-
-
-     Press q to quit
-```
 
 ## Installation
 
@@ -62,26 +38,49 @@ Go to [Releases](https://github.com/Ricardo-Castro-Gastelum/bloofetch/releases) 
 ## Usage
 
 ```bash
-# Run the full-screen app
+# Run with default settings
 bloofetch
 
-# Press q or Esc to quit
+# Run with accent color
+bloofetch -c cyan
+bloofetch --color red
 ```
 
-## Features
-
-- **Full-screen TUI** - Takes over your terminal like cava
-- **Big ASCII Clock** - Large digital clock in the center
-- **System Stats** - CPU, RAM, and Disk as simple percentages
-- **Minimal Design** - Clean, no borders, no clutter
-- **Cross-platform** - Linux, macOS
-
-## Controls
+### Controls
 
 | Key | Action |
 |-----|--------|
-| `q` | Quit |
-| `Esc` | Quit |
+| `q` / `Esc` | Quit |
+
+## Options
+
+| Flag | Description |
+|------|-------------|
+| `-c`, `--color <COLOR>` | Set accent color |
+| `-h`, `--help` | Print help |
+
+### Available Colors
+
+| Color | Preview |
+|-------|---------|
+| `white` | Default |
+| `red` | Red accent |
+| `green` | Green accent |
+| `yellow` | Yellow accent |
+| `blue` | Blue accent |
+| `magenta` | Magenta accent |
+| `cyan` | Cyan accent |
+| `gray` | Gray accent |
+
+## Features
+
+- Full-screen TUI clock (no solid background)
+- Real-time system stats (CPU, RAM, Disk)
+- 8 accent colors via CLI flag
+- Block-style ASCII digits
+- Auto-updates every second
+- Fast startup (~1MB binary)
+- Cross-platform (Linux, macOS, Windows)
 
 ## License
 
