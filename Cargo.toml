@@ -3,7 +3,7 @@ name = "bloofetch"
 version = "0.3.0"
 edition = "2021"
 description = "A beautiful full-screen terminal clock with system stats"
-license = "Apache-2.0"
+license = "MIT"
 repository = "https://github.com/Ricardo-Castro-Gastelum/bloofetch"
 
 [dependencies]

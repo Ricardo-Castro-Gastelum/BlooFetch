@@ -1,18 +1,15 @@
 <p align="center">
-  <img src="logo.png" alt="BlooFetch" width="200">
-</p>
-
-<h1 align="center">BlooFetch</h1>
-
-<p align="center">
-  Full-screen terminal clock with system stats
+  <img src="src/logo/BlooCava.png" alt="BlooFetch Logo" width="400">
 </p>
 
 <p align="center">
-  <a href="#installation">Installation</a> •
-  <a href="#usage">Usage</a> •
-  <a href="#options">Options</a> •
-  <a href="#license">License</a>
+  <strong>Full-screen terminal clock with system stats</strong>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/version-0.3.0-blue" alt="Version">
+  <img src="https://img.shields.io/badge/license-MIT-green" alt="License">
+  <img src="https://img.shields.io/badge/language-Rust-orange" alt="Rust">
 </p>
 
 ---
@@ -84,4 +81,4 @@ bloofetch --color red
 
 ## License
 
-[Apache-2.0](LICENSE)
+[MIT](LICENSE)
