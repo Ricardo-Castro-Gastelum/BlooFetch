@@ -48,6 +48,7 @@ bloofetch --color red
 | Key | Action |
 |-----|--------|
 | `q` / `Esc` | Quit |
+| `p` | Toggle particles |
 
 ## Options
 
@@ -75,6 +76,7 @@ bloofetch --color red
 - Real-time system stats (CPU, RAM, Disk)
 - 8 accent colors via CLI flag
 - Block-style ASCII digits
+- Floating particles background (toggle with `p`)
 - Auto-updates every second
 - Fast startup (~1MB binary)
 - Cross-platform (Linux, macOS, Windows)

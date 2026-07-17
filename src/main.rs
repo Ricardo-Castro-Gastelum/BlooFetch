@@ -1,4 +1,5 @@
 mod clock;
+mod particles;
 mod stats;
 
 use std::io;
@@ -18,6 +19,7 @@ use ratatui::{
     Frame, Terminal,
 };
 
+use particles::Particles;
 use stats::SystemStats;
 
 fn parse_color(s: &str) -> Color {
@@ -57,6 +59,7 @@ fn main() -> Result<(), io::Error> {
                 println!("  -h, --help           Print help");
                 println!("\nControls:");
                 println!("  q / Esc              Quit");
+                println!("  p                    Toggle particles");
                 return Ok(());
             }
             _ => i += 1,
@@ -71,17 +74,28 @@ fn main() -> Result<(), io::Error> {
     let backend = CrosstermBackend::new(stdout);
     let mut terminal = Terminal::new(backend)?;
 
+    let mut show_particles = true;
+    let mut particle_system = Particles::new(120, 40, 50);
+
     loop {
         let sys_stats = SystemStats::new();
+        let size = terminal.size()?;
+        let w = size.width as usize;
+        let h = size.height as usize;
+
+        if show_particles {
+            particle_system.update(w, h);
+        }
 
         terminal.draw(|f| {
-            ui(f, &sys_stats, accent_color);
+            ui(f, &sys_stats, accent_color, show_particles, &particle_system);
         })?;
 
-        if event::poll(Duration::from_millis(500))? {
+        if event::poll(Duration::from_millis(100))? {
             if let Event::Key(key) = event::read()? {
                 match key.code {
                     KeyCode::Char('q') | KeyCode::Esc => break,
+                    KeyCode::Char('p') => show_particles = !show_particles,
                     _ => {}
                 }
             }
@@ -95,8 +109,36 @@ fn main() -> Result<(), io::Error> {
     Ok(())
 }
 
-fn ui(f: &mut Frame, stats: &SystemStats, color: Color) {
+fn ui(
+    f: &mut Frame,
+    stats: &SystemStats,
+    color: Color,
+    show_particles: bool,
+    particle_system: &Particles,
+) {
     let size = f.area();
+
+    if show_particles {
+        let mut grid = vec![vec![' '; size.width as usize]; size.height as usize];
+        for p in &particle_system.items {
+            let px = p.x as usize;
+            let py = p.y as usize;
+            if px < size.width as usize && py < size.height as usize {
+                grid[py][px] = p.char;
+            }
+        }
+        let particle_lines: Vec<Line> = grid
+            .iter()
+            .map(|row| {
+                Line::from(Span::styled(
+                    row.iter().collect::<String>(),
+                    Style::default().fg(color),
+                ))
+            })
+            .collect();
+        let particle_block = Paragraph::new(particle_lines);
+        f.render_widget(particle_block, size);
+    }
 
     let ram_pct = stats.ram_percent();
     let cpu_pct = stats.cpu;
@@ -151,12 +193,13 @@ fn ui(f: &mut Frame, stats: &SystemStats, color: Color) {
 
     f.render_widget(clock_block, clock_area);
 
-    let hint_text = "q: quit";
+    let particle_status = if show_particles { "ON" } else { "OFF" };
+    let hint_text = format!("q: quit  p: particles [{}]", particle_status);
     let hint_x = size.width.saturating_sub(hint_text.len() as u16 + 2);
     let hint_y = size.height.saturating_sub(1);
 
     let hint_block = Paragraph::new(Span::styled(
-        hint_text,
+        &hint_text,
         Style::default().fg(Color::DarkGray),
     ));
 
