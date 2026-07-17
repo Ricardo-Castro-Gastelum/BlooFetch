@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <strong>Full-screen terminal clock with system stats</strong>
+  <strong>Terminal clock with system statistics</strong>
 </p>
 
 <p align="center">
